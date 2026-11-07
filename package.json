@@ -1,0 +1,13 @@
+{
+  "name": "tablero-llm-onpremise",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tablero de tareas para la presentación del proyecto LLM on premise (CYTMA 2027 A)",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.8"
+  }
+}

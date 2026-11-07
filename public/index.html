@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tareas: Proyecto LLM on premise (CYTMA 2027 A)</title>
+  <meta name="description" content="Tareas y estado de la presentación del proyecto LLM on premise en la convocatoria CYTMA 2027 A.">
+  <meta name="theme-color" content="#14304D">
+  <meta property="og:title" content="Proyecto LLM on premise: tareas para CYTMA 2027 A">
+  <meta property="og:description" content="Qué falta, quién lo hace y en qué estado está. Cierre de SIGEVA: domingo 15/11.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-top">
+        <div>
+          <h1 class="masthead-title" id="project-title"></h1>
+          <p class="masthead-sub" id="project-subtitle"></p>
+        </div>
+        <div class="masthead-actions">
+          <button class="icon-btn" id="share-btn" type="button" aria-label="Compartir el link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>
+          </button>
+          <button class="me-btn" id="me-btn" type="button" aria-label="Elegir quién sos">?</button>
+        </div>
+      </div>
+
+      <nav class="strip" id="strip" aria-label="Días hasta el cierre"></nav>
+      <p class="countdown" id="countdown"></p>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="identify" class="identify" hidden></section>
+
+    <section class="summary" aria-label="Resumen">
+      <div class="progress-line">
+        <p class="progress-text" id="progress-text"></p>
+        <p class="sync" id="sync" role="status" aria-live="polite"></p>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+      <div class="counters" id="counters" role="group" aria-label="Filtrar por estado"></div>
+    </section>
+
+    <div class="filters" id="filters" role="group" aria-label="Filtrar por persona"></div>
+
+    <aside class="notice" id="notice" hidden></aside>
+
+    <p class="hint" id="hint" hidden>Tocá una tarea para cambiar su estado.</p>
+
+    <div id="groups" class="groups" aria-live="off"></div>
+
+    <p class="footnote">Los cambios se guardan para todo el equipo. Cualquiera con el link puede editar.</p>
+  </main>
+
+  <button class="fab" id="add-btn" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+    <span>Agregar tarea</span>
+  </button>
+
+  <div class="sheet-backdrop" id="backdrop" hidden></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="sheet-body" id="sheet-body"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
