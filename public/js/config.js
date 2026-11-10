@@ -104,15 +104,15 @@ export const SEED_TASKS = [
     owners: ["damian"],
   },
   {
-    id: "t07", start: "2026-11-11",
+    id: "t07", start: "2026-11-09", status: "hecha",
     title: "Compartir el código del trámite y vincularse al proyecto",
-    detail: "Pablo pasa el código. Damián y Claudio se vinculan: rol \"Usuario banco de datos de actividades CyT\" > Trámite > Participación en una convocatoria.",
+    detail: "Pablo pasó el código y Damián y Claudio se vincularon el 9/11.",
     owners: ALL,
   },
   {
-    id: "t11", start: "2026-11-11", director: true,
+    id: "t11", start: "2026-11-09", director: true, status: "hecha",
     title: "Asignar roles y horas en SIGEVA",
-    detail: "Después de que se vinculen. Damián codirector (4 h) y Claudio investigador (6 h); Pablo, director, 4 h. Las mismas horas que el FPI-002.",
+    detail: "Pablo lo hizo el 9/11: él 4 h, Damián 4 h y Claudio 6 h, igual que el FPI-002.",
     owners: ["pablo"],
   },
   {
@@ -124,8 +124,8 @@ export const SEED_TASKS = [
   {
     id: "t14", start: "2026-11-12", director: true,
     title: "Completar SIGEVA",
-    detail: "Carátula, institución (UNLaM al 100 %), recursos financieros con los mismos montos por rubro y año que el FPI-002 ($ 574.000 por año) y adjuntos. Pablo, con el apoyo de Damián.",
-    owners: ["pablo", "damian"],
+    detail: "La carátula ya está. Falta:\n1) Instituciones relacionadas: solo UNLaM, ejecuta y financia al 100 %. Tiene que quedar en «Ok».\n2) Recursos financieros, en cada año: g) Servicios de terceros $ 434.000 y f) Difusión $ 140.000; el resto en $ 0. Total $ 574.000 por año, igual que el FPI-002.\n3) Adjuntos: el FPI-002 revisado por Natalia, con las correcciones, y la nota de compromiso firmada por los tres.\nDespués, bajar el PDF «Presentación» para revisar que coincida con el FPI-002.",
+    owners: ["pablo"],
   },
   {
     id: "t15", start: "2026-11-13", director: true,
