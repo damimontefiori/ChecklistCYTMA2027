@@ -1,5 +1,5 @@
 import { PROJECT, PEOPLE, HOLIDAYS, STATUSES } from "./config.js";
-import { applyOp, initialState, sortTasks, cleanPerson } from "./core.js";
+import { applyOp, initialState, normalizeTask, sortTasks, cleanPerson } from "./core.js";
 
 const API = "/api/tasks";
 const POLL_MS = 15000;
@@ -38,8 +38,9 @@ const filters = { person: "all", status: "all" };
 const collapsedOverride = new Map();
 let flashId = null;
 
+// Valida y normaliza (descarta responsables que ya no están en el equipo).
 function validState(s) {
-  return s && Array.isArray(s.tasks) ? s : null;
+  return s && Array.isArray(s.tasks) ? { ...s, tasks: s.tasks.map(normalizeTask) } : null;
 }
 
 /* ---------- Fechas ---------- */
@@ -199,8 +200,9 @@ function renderFilters() {
 }
 
 function ownersHtml(t) {
-  if (t.owners.length === PEOPLE.length) return `<span class="who${me ? " is-me" : ""}">Todos</span>`;
-  return t.owners.map((id) => `<span class="who${id === me ? " is-me" : ""}">${esc(PERSON[id].name)}</span>`).join("");
+  const owners = t.owners.filter((id) => PERSON[id]);
+  if (owners.length === PEOPLE.length) return `<span class="who${me ? " is-me" : ""}">Todos</span>`;
+  return owners.map((id) => `<span class="who${id === me ? " is-me" : ""}">${esc(PERSON[id].name)}</span>`).join("");
 }
 
 function metaHtml(t, today) {
@@ -302,7 +304,7 @@ function renderMe() {
 }
 
 function whoGrid() {
-  return `<div class="who-grid">${PEOPLE.map((p) =>
+  return `<div class="who-grid" style="grid-template-columns: repeat(${PEOPLE.length}, minmax(0, 1fr))">${PEOPLE.map((p) =>
     `<button type="button" class="who-btn" data-who="${p.id}" aria-pressed="${p.id === me}"><b>${esc(p.name)}</b><span>${esc(p.role)}</span></button>`
   ).join("")}</div>`;
 }
@@ -381,7 +383,7 @@ function openTask(id, { confirmDelete = false } = {}) {
   if (!t) return;
   const today = todayISO();
   const updated = t.updatedAt
-    ? `<p class="updated">Última actualización: ${t.updatedBy ? esc(PERSON[t.updatedBy].name) + ", " : ""}${ago(t.updatedAt)}.</p>`
+    ? `<p class="updated">Última actualización: ${PERSON[t.updatedBy] ? esc(PERSON[t.updatedBy].name) + ", " : ""}${ago(t.updatedAt)}.</p>`
     : "";
   const confirm = confirmDelete
     ? `<div class="confirm"><p>¿Borrar esta tarea para todo el equipo?</p>

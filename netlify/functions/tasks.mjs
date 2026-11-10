@@ -2,12 +2,16 @@
 // Guarda en Netlify Blobs (sin configuración ni claves), una entrada por tarea:
 // dos personas que actualizan tareas distintas al mismo tiempo no se pisan.
 import { getStore } from "@netlify/blobs";
-import { applyOp, initialState, sortTasks, OpError } from "../../public/js/core.js";
+import { applyOp, initialState, normalizeTask, sortTasks, OpError } from "../../public/js/core.js";
+import * as rolesNov9 from "../migrations/2026-11-09-roles.mjs";
 
 const STORE = "tablero-cytma-2027";
 const PREFIX = "task/";
 const META = "meta";
 const MAX_BODY = 20_000;
+
+// Cambios a tareas ya guardadas. Cada una corre una sola vez y queda marcada.
+const MIGRATIONS = [rolesNov9];
 
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
@@ -40,11 +44,32 @@ async function seedIfNeeded(store) {
   await store.setJSON(META, { seededAt: new Date().toISOString() });
 }
 
+async function migrateIfNeeded(store) {
+  for (const migration of MIGRATIONS) {
+    const marker = `migration/${migration.id}`;
+    if (await store.get(marker, { type: "json" })) continue;
+    const now = new Date().toISOString();
+    const { blobs } = await store.list({ prefix: PREFIX });
+    let changed = 0;
+    await Promise.all(blobs.map(async (b) => {
+      const raw = await store.get(b.key, { type: "json" });
+      if (!raw || typeof raw.id !== "string") return;
+      const next = migration.migrateTask(raw, now);
+      if (next) {
+        await store.setJSON(b.key, normalizeTask(next));
+        changed++;
+      }
+    }));
+    await store.setJSON(marker, { appliedAt: now, changed });
+  }
+}
+
 async function loadTasks(store) {
   await seedIfNeeded(store);
+  await migrateIfNeeded(store);
   const { blobs } = await store.list({ prefix: PREFIX });
   const tasks = await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" })));
-  return tasks.filter((t) => t && typeof t.id === "string");
+  return tasks.filter((t) => t && typeof t.id === "string").map(normalizeTask);
 }
 
 export default async (req) => {

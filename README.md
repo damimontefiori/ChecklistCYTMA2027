@@ -30,6 +30,8 @@ Todo está en `public/js/config.js`: título, fecha de cierre, aviso, personas, 
 
 Las tareas iniciales se cargan **solo la primera vez** que se abre la página desplegada. Después, la lista vive en Netlify Blobs y se edita desde la propia página. Para empezar de cero con la lista de `config.js`, cambiá el valor de `STORE` en `netlify/functions/tasks.mjs` (por ejemplo, a `tablero-cytma-2027-v2`) y hacé push.
 
+Para corregir tareas ya guardadas sin borrar lo que hizo el equipo, se usa una migración en `netlify/migrations/`. Corre una sola vez, en la primera visita después del despliegue. La del 9/11 (`2026-11-09-roles.mjs`) aplica el cambio de roles: Pablo director, Damián codirector y Jorge fuera de la lista. También carga el avance conocido a esa fecha. Solo cambia los campos que nadie editó desde la app, los estados solo avanzan y no recrea tareas borradas.
+
 ## Estructura
 
 ```
@@ -41,6 +43,7 @@ public/
   js/app.js         interfaz
 netlify/functions/
   tasks.mjs         API: GET /api/tasks y POST /api/tasks
+netlify/migrations/ cambios únicos sobre las tareas ya guardadas
 netlify.toml
 package.json
 ```
