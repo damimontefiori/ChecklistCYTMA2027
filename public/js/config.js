@@ -117,8 +117,8 @@ export const SEED_TASKS = [
   },
   {
     id: "t17", start: "2026-11-11", end: "2026-11-12",
-    title: "Confirmar con la Secretaría el rubro de Colab",
-    detail: "La pregunta del mail del 6/11 quedó sin respuesta. Si Colab va en servicios de terceros (g) o en licencias (b), y los aranceles de CACIC y JAIIO. El miércoles es feriado en PBA y Natalia puede no estar: si no responde, el jueves. Si cambia algo, Pablo vuelve a subir el FPI-002 al SPI y se cargan los mismos montos en SIGEVA.",
+    title: "Consultar a Natalia el rubro de Colab y la entrega en papel",
+    detail: "1) Si Colab va en servicios de terceros (g) o en licencias (b), y los aranceles de CACIC y JAIIO. La pregunta del mail del 6/11 quedó sin respuesta. Si cambia algo, Pablo vuelve a subir el FPI-002 al SPI y se cargan los mismos montos en SIGEVA.\n2) Si sigue siendo necesario entregar en papel el PDF de la presentación y el Anexo I con firmas originales, hasta qué fecha y en qué horario. Investigación no atiende sábados ni domingos.\nEl miércoles es feriado en PBA y Natalia puede no estar: si no responde, el jueves.",
     owners: ["damian"],
   },
   {
@@ -136,7 +136,7 @@ export const SEED_TASKS = [
   {
     id: "t16", start: null, director: true,
     title: "Entregar en la Secretaría el PDF impreso y la nota de compromiso",
-    detail: "Después del envío. Ambos con firmas originales. Los entrega Pablo o Damián.",
+    detail: "Después de «Enviar presentación». Según el instructivo, en papel y con firmas originales; un escaneo no lo reemplaza. No hay fecha fija y no tiene que ser antes del 15/11: la fecha, y si sigue siendo necesario, se lo consultamos a Natalia. Investigación no atiende sábados ni domingos. Lo entregan Pablo o Damián.",
     owners: ["pablo", "damian"],
   },
 ];
