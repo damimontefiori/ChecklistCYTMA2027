@@ -19,6 +19,7 @@ Cada `git push` a `main` vuelve a desplegar. **Las tareas y sus estados no se pi
 ## Cómo se usa
 
 - **Franja de días**: muestra cada día hasta el cierre de SIGEVA. Las barritas son las tareas de ese día: gris pendiente, amarillo en curso, verde hecha, rojo atrasada. Tocar un día lleva a sus tareas.
+- **Días colapsados**: muestran su estado (Completo, En curso o Pendiente). Los días pasados con todo hecho se colapsan solos.
 - **Tocar una tarea** abre el detalle: un toque en Pendiente, En curso o Hecha cambia el estado. Desde ahí también se edita o se borra. Al borrar aparece **Deshacer** durante unos segundos.
 - **Agregar tarea**: el botón de abajo a la derecha.
 - **Filtros**: por persona (los chips) y por estado (tocando los contadores).
@@ -30,7 +31,7 @@ Todo está en `public/js/config.js`: título, fecha de cierre, aviso, personas, 
 
 Las tareas iniciales se cargan **solo la primera vez** que se abre la página desplegada. Después, la lista vive en Netlify Blobs y se edita desde la propia página. Para empezar de cero con la lista de `config.js`, cambiá el valor de `STORE` en `netlify/functions/tasks.mjs` (por ejemplo, a `tablero-cytma-2027-v2`) y hacé push.
 
-Para corregir tareas ya guardadas sin borrar lo que hizo el equipo, se usa una migración en `netlify/migrations/`. Corre una sola vez, en la primera visita después del despliegue. La del 9/11 (`2026-11-09-roles.mjs`) aplica el cambio de roles: Pablo director, Damián codirector y Jorge fuera de la lista. También carga el avance conocido a esa fecha. Solo cambia los campos que nadie editó desde la app, los estados solo avanzan y no recrea tareas borradas.
+Para corregir tareas ya guardadas sin borrar lo que hizo el equipo, se usa una migración en `netlify/migrations/`. Cada una corre una sola vez, en la primera visita después del despliegue. Solo cambia los campos que nadie editó desde la app, los estados solo avanzan y no recrea tareas borradas. Hay dos: `2026-11-09-roles.mjs` (cambio de roles) y `2026-11-10-avance.mjs` (FPI-002 y nota subidos al SPI, horas, fechas de lo que falta en SIGEVA y la tarea del rubro de Colab).
 
 ## Estructura
 

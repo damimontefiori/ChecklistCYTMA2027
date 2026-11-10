@@ -238,6 +238,12 @@ function renderGroups(tasks, today) {
     const collapsed = collapsedOverride.has(g.key) ? collapsedOverride.get(g.key) : autoCollapsed;
     const done = g.tasks.filter((t) => t.status === "hecha").length;
     const late = g.tasks.filter((t) => isLate(t, today)).length;
+    const groupStatus = done === g.tasks.length ? "hecha"
+      : done > 0 || g.tasks.some((t) => t.status === "en_curso") ? "en_curso" : "pendiente";
+    const groupStatusLabel = { hecha: "Completo", en_curso: "En curso", pendiente: "Pendiente" }[groupStatus];
+    const collapsedPill = collapsed
+      ? `<span class="pill group-pill" data-s="${groupStatus}">${ICON[groupStatus]}${groupStatusLabel}</span>`
+      : "";
     const badges =
       (isToday ? '<span class="badge badge-today">Hoy</span>' : "") +
       (g.start && HOLIDAYS[g.start] ? `<span class="badge badge-holiday">${esc(HOLIDAYS[g.start])}</span>` : "") +
@@ -262,7 +268,7 @@ function renderGroups(tasks, today) {
         data-key="${esc(g.key)}" data-start="${g.start || ""}" data-end="${last || ""}">
       <button type="button" class="group-head" aria-expanded="${!collapsed}">
         ${ICON.chev}<span class="group-title">${esc(groupLabel(g.start, g.end))}</span>${badges}
-        <span class="group-count">${done}/${g.tasks.length}</span>
+        ${collapsedPill}<span class="group-count">${done}/${g.tasks.length}</span>
       </button>
       <ul class="task-list">${rows}</ul>
     </section>`;

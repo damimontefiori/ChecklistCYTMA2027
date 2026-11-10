@@ -196,6 +196,8 @@ button:disabled { cursor: default; }
 .badge-holiday { background: #e4e9f0; color: var(--ink-2); }
 .badge-late { background: var(--late-bg); color: var(--late); }
 .group-count { margin-left: auto; font-size: 13px; color: var(--muted); }
+.group-pill { margin-left: auto; }
+.group-pill + .group-count { margin-left: 0; }
 .chev { width: 16px; height: 16px; fill: none; stroke: var(--muted); stroke-width: 2; transition: transform .2s; flex-shrink: 0; }
 .group.is-collapsed .chev { transform: rotate(-90deg); }
 .group.is-collapsed .task-list { display: none; }

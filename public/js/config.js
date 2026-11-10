@@ -9,9 +9,7 @@ export const PROJECT = {
   deadlineName: "el cierre de SIGEVA",
   deadlineNote: "Sin prórroga.",
   timeZone: "America/Argentina/Buenos_Aires",
-  notice:
-    "Cambio de roles (8/11): Pablo es el director y Damián el codirector. " +
-    "Los pasos marcados con ✱ los hace Pablo en SIGEVA con su usuario.",
+  notice: "",
 };
 
 export const PEOPLE = [
@@ -51,15 +49,15 @@ export const SEED_TASKS = [
     owners: ALL,
   },
   {
-    id: "t03", start: "2026-11-08", status: "en_curso",
+    id: "t03", start: "2026-11-10", status: "en_curso",
     title: "Actualizar el CV en SIGEVA UNLaM y adjuntar el archivo del CV",
-    detail: "En unlam.sigeva.gob.ar. No se actualiza solo; si no tenés usuario, hay que crearlo.",
+    detail: "Cada uno en su usuario: Otros antecedentes > Currículum. El PDF sale de Principal > Imprimir currículum > Imprimir CV (pdf); ese mismo archivo se lo pasan a Pablo para el SPI.",
     owners: ALL,
   },
   {
-    id: "t04", start: "2026-11-08", status: "en_curso",
-    title: "Pasar las horas semanales de dedicación",
-    detail: "Propuesta: Pablo 4, Damián 10 y Claudio 10. Falta que cada uno la confirme.",
+    id: "t04", start: "2026-11-08", status: "hecha",
+    title: "Definir las horas semanales de dedicación",
+    detail: "Quedaron en el FPI-002 v5: Pablo 4, Damián 4 y Claudio 6.",
     owners: ALL,
   },
   {
@@ -71,67 +69,73 @@ export const SEED_TASKS = [
   {
     id: "t06", start: "2026-11-08", status: "hecha",
     title: "Borrador del presupuesto y de los textos de la carátula",
-    detail: "Textos de la carátula listos, con el resumen en inglés. Presupuesto estimado en el FPI-002.",
+    detail: "Textos de la carátula listos, con el resumen en inglés. Presupuesto en el FPI-002 v5.",
     owners: ["damian"],
   },
   {
-    id: "t07", start: "2026-11-09",
+    id: "t08", start: "2026-11-09", status: "hecha",
+    title: "Cerrar y revisar el FPI-002",
+    detail: "Versión final v5: Pablo director, Damián codirector y Claudio investigador. Presupuesto de $ 1.148.000 ($ 574.000 por año), debajo del tope de $ 1.500.000.",
+    owners: ALL,
+  },
+  {
+    id: "t09", start: "2026-11-10", director: true, status: "hecha",
+    title: "Subir el FPI-002 y la nota de compromiso al SPI",
+    detail: "Pablo los subió el 10/11. Desde el SPI le llegan a Natalia para que los revise y nos confirme.",
+    owners: ["pablo"],
+  },
+  {
+    id: "t13", start: "2026-11-10", status: "hecha",
+    title: "Nota de compromiso firmada a mano por los tres",
+    detail: "Firmada por Pablo, Damián y Claudio. Pablo la subió al SPI el 10/11.",
+    owners: ALL,
+  },
+  {
+    id: "t10", start: "2026-11-10", status: "hecha",
+    title: "Avisarle a Natalia el cambio de director",
+    detail: "Natalia ya trabaja con Pablo como director: el usuario del SPI quedó a su nombre.",
+    owners: ["damian"],
+  },
+  {
+    id: "t12", start: "2026-11-10", end: "2026-11-13",
+    title: "Resolver las correcciones de la Secretaría en menos de 24 h",
+    detail: "Natalia revisa lo que se subió al SPI. Damián resuelve lo que pida, consultando con el equipo.",
+    owners: ["damian"],
+  },
+  {
+    id: "t07", start: "2026-11-11",
     title: "Compartir el código del trámite y vincularse al proyecto",
     detail: "Pablo pasa el código. Damián y Claudio se vinculan: rol \"Usuario banco de datos de actividades CyT\" > Trámite > Participación en una convocatoria.",
     owners: ALL,
   },
   {
-    id: "t08", start: "2026-11-09", status: "en_curso",
-    title: "Actualizar y revisar el FPI-002",
-    detail: "Borrador v2 listo. Falta poner a Pablo como director y a Damián como codirector, sacar a Jorge de la tabla de horas y de la nota de compromiso, y que el equipo lo revise.",
-    owners: ALL,
-  },
-  {
-    id: "t09", start: "2026-11-10", director: true,
-    title: "Subir el FPI-002 y la documentación al SPI",
-    detail: "A primera hora, si Natalia ya creó el usuario del SPI para Pablo. Lo sube Pablo o Damián, según indique Natalia.",
-    owners: ["pablo", "damian"],
-  },
-  {
-    id: "t10", start: "2026-11-10",
-    title: "Llamar a Natalia y avisarle el cambio de director",
-    detail: "Interno 8762. Avisar que el director es Pablo (el usuario del SPI se crea para el director) y que Damián es codirector. Confirmar que llegan a revisar, si Damián puede cargar en el SPI y en qué rubro va Colab.",
-    owners: ["damian"],
-  },
-  {
-    id: "t11", start: "2026-11-10", director: true,
+    id: "t11", start: "2026-11-11", director: true,
     title: "Asignar roles y horas en SIGEVA",
-    detail: "Pablo director, Damián codirector y Claudio investigador, cada uno con sus horas.",
+    detail: "Después de que se vinculen. Damián codirector (4 h) y Claudio investigador (6 h); Pablo, director, 4 h. Las mismas horas que el FPI-002.",
     owners: ["pablo"],
   },
   {
-    id: "t12", start: "2026-11-10", end: "2026-11-13",
-    title: "Resolver las correcciones de la Secretaría en menos de 24 h",
-    detail: "Damián las resuelve consultando con el equipo.",
+    id: "t17", start: "2026-11-11",
+    title: "Confirmar con la Secretaría el rubro de Colab",
+    detail: "Si Colab va en servicios de terceros (g) o en licencias (b), y los aranceles de CACIC y JAIIO. Interno 8762.",
     owners: ["damian"],
-  },
-  {
-    id: "t13", start: "2026-11-12",
-    title: "Nota de compromiso firmada a mano por los tres y escaneada",
-    detail: "Firman Pablo, Damián y Claudio. Coordina Damián.",
-    owners: ALL,
   },
   {
     id: "t14", start: "2026-11-12", director: true,
     title: "Completar SIGEVA",
-    detail: "Carátula, institución (UNLaM al 100 %), presupuesto y adjuntos. Pablo, con el apoyo de Damián.",
+    detail: "Carátula, institución (UNLaM al 100 %), recursos financieros con los mismos montos por rubro y año que el FPI-002 ($ 574.000 por año) y adjuntos. Pablo, con el apoyo de Damián.",
     owners: ["pablo", "damian"],
   },
   {
     id: "t15", start: "2026-11-13", director: true,
-    title: "Enviar la presentación en SIGEVA",
-    detail: "Solo con el OK de la Secretaría. Mejor no dejarlo para el fin de semana.",
+    title: "Presionar \"Enviar presentación\" en SIGEVA",
+    detail: "Solo cuando Natalia confirme por correo. Bloquea el proyecto. SIGEVA cierra el dom 15/11: mejor no dejarlo para el fin de semana.",
     owners: ["pablo"],
   },
   {
     id: "t16", start: null, director: true,
     title: "Entregar en la Secretaría el PDF impreso y la nota de compromiso",
-    detail: "Ambos con firmas originales. Los entrega Pablo o Damián.",
+    detail: "Después del envío. Ambos con firmas originales. Los entrega Pablo o Damián.",
     owners: ["pablo", "damian"],
   },
 ];
