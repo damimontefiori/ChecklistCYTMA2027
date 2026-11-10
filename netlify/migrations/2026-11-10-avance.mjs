@@ -2,7 +2,7 @@
 // por Pablo, horas definidas (4, 4 y 6), fechas reacomodadas para lo que falta
 // en SIGEVA y nueva tarea para confirmar el rubro de Colab.
 import { SEED_V2 } from "./seed-2026-11-09.mjs";
-import { SEED_TASKS } from "../../public/js/config.js";
+import { SEED_V3 as SEED_TASKS } from "./seed-2026-11-10.mjs";
 import { migrateBetween } from "./apply.mjs";
 
 export const id = "2026-11-10-avance";

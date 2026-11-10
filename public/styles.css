@@ -257,11 +257,18 @@ button:disabled { cursor: default; }
 /* ---------- Botón flotante ---------- */
 .fab {
   position: fixed; right: 16px; bottom: calc(18px + var(--safe-b)); z-index: 10;
-  display: inline-flex; align-items: center; gap: 6px;
-  border: 0; border-radius: 999px; background: var(--ink); color: #fff;
-  padding: 12px 18px 12px 14px; font-weight: 600; font-size: 14.5px;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 52px; min-width: 52px; border: 0; border-radius: 999px; background: var(--ink); color: #fff;
+  padding: 0 14px; font-weight: 600; font-size: 14.5px;
   box-shadow: 0 6px 18px rgba(20, 48, 77, 0.32);
+  transition: padding .2s ease;
 }
+.fab-label {
+  max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
+  transition: max-width .22s ease, opacity .15s ease, margin .22s ease;
+}
+.fab.is-extended { padding: 0 18px 0 14px; }
+.fab.is-extended .fab-label { max-width: 140px; opacity: 1; margin-left: 6px; }
 .fab svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
 @media (min-width: 700px) { .fab { right: calc(50% - 320px + 16px); } }
 

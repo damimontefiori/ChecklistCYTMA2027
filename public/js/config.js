@@ -20,6 +20,7 @@ export const PEOPLE = [
 
 export const HOLIDAYS = {
   "2026-11-09": "Feriado",
+  "2026-11-11": "Feriado en PBA",
 };
 
 export const STATUSES = [
@@ -115,9 +116,9 @@ export const SEED_TASKS = [
     owners: ["pablo"],
   },
   {
-    id: "t17", start: "2026-11-11",
+    id: "t17", start: "2026-11-11", end: "2026-11-12",
     title: "Confirmar con la Secretaría el rubro de Colab",
-    detail: "Si Colab va en servicios de terceros (g) o en licencias (b), y los aranceles de CACIC y JAIIO. Interno 8762.",
+    detail: "La pregunta del mail del 6/11 quedó sin respuesta. Si Colab va en servicios de terceros (g) o en licencias (b), y los aranceles de CACIC y JAIIO. El miércoles es feriado en PBA y Natalia puede no estar: si no responde, el jueves. Si cambia algo, Pablo vuelve a subir el FPI-002 al SPI y se cargan los mismos montos en SIGEVA.",
     owners: ["damian"],
   },
   {

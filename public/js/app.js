@@ -779,7 +779,15 @@ function bindEvents() {
   });
 
   const filtersEl = $("#filters");
-  const onScroll = () => filtersEl.classList.toggle("is-stuck", filtersEl.getBoundingClientRect().top <= 0.5);
+  const fab = $("#add-btn");
+  let fabTimer = null;
+  const onScroll = () => {
+    filtersEl.classList.toggle("is-stuck", filtersEl.getBoundingClientRect().top <= 0.5);
+    // El botón muestra solo "+" en reposo y se amplía mientras se hace scroll.
+    fab.classList.add("is-extended");
+    clearTimeout(fabTimer);
+    fabTimer = setTimeout(() => fab.classList.remove("is-extended"), 1200);
+  };
   window.addEventListener("scroll", onScroll, { passive: true });
 
   document.addEventListener("visibilitychange", () => {
