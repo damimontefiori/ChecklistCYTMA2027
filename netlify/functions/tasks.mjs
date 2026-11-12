@@ -8,6 +8,7 @@ import * as avanceNov10 from "../migrations/2026-11-10-avance.mjs";
 import * as colabNov10 from "../migrations/2026-11-10-colab.mjs";
 import * as sigevaNov10 from "../migrations/2026-11-10-sigeva.mjs";
 import * as papelNov10 from "../migrations/2026-11-10-papel.mjs";
+import * as paroNov12 from "../migrations/2026-11-12-paro.mjs";
 
 const STORE = "tablero-cytma-2027";
 const PREFIX = "task/";
@@ -15,7 +16,7 @@ const META = "meta";
 const MAX_BODY = 20_000;
 
 // Cambios a tareas ya guardadas. Cada una corre una sola vez y queda marcada.
-const MIGRATIONS = [rolesNov9, avanceNov10, colabNov10, sigevaNov10, papelNov10];
+const MIGRATIONS = [rolesNov9, avanceNov10, colabNov10, sigevaNov10, papelNov10, paroNov12];
 
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
